@@ -1,3 +1,6 @@
+[Live Demo of this site ](https://wowthemesnet.github.io/mediumish-theme-jekyll/) 
+
+
 # Mediumish - Jekyll Theme
 
 ![mediumish](assets/images/mediumish-jekyll-template.png)
@@ -22,3 +25,10 @@ Copyright (C) 2019 Sal, https://www.wowthemes.net
 4. Make necessary changes, commit, push and open a pull request on GitHub.
 
 Thank you!
+
+
+Clone your resume repository locally (if you haven't already)
+cd [your-repository-name]
+bundle install
+bundle exec jekyll serve
+Open your browser to http://localhost:4000

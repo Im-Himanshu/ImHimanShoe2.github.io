@@ -1,13 +1,13 @@
 # Site
-name: "Son Do"
-title: "Son Do"
-description: "Personal blog"
+name: "Himanshu Goyal"
+title: "Himanshu Goyal"
+description: "Personal Site"
 meta_description: "Jekyll, Personal, Blog"
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
 baseurl: ''
 google_analytics: 'UA-139985902-1'
-disqus: 'sondh5'
+disqus: ''
 mailchimp-list: ''
 include: ["_pages"]
 permalink: /:title/
@@ -15,13 +15,13 @@ permalink: /:title/
 # Authors
 authors:
   sondo:
-    name: Son
-    display_name: Son Do
+    name: Himanshu
+    display_name: Himanshu Goyal
     gravatar: e56154546cf4be74e393c62d1ae9f9d4
-    email: hongsondhs@gmail.com
+    email: goyalhimanshu414@gmail.com
     web: https://www.facebook.com/sondh5
     facebook: https://www.facebook.com/sondh5
-    description: "Software engineering/ Freelance web developer/ Backpacker"
+    description: "DataScientist/ entrepreneur/ Gymer"
 
 # Plugins
 plugins:
