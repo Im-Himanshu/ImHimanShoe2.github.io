@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/assets/images/logo.png">
+
+    <title>Xây dựng trang cá nhân với gem Jekyll | Son Do</title>
+
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Xây dựng trang cá nhân với gem Jekyll | Son Do</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Xây dựng trang cá nhân với gem Jekyll" />
+<meta name="author" content="sondh5" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Hướng dẫn tạo 1 trang cá nhân, static blog trong vòng 10 phút với gem Jekyll." />
+<meta property="og:description" content="Hướng dẫn tạo 1 trang cá nhân, static blog trong vòng 10 phút với gem Jekyll." />
+<link rel="canonical" href="http://localhost:4000/quick-start-guide/" />
+<meta property="og:url" content="http://localhost:4000/quick-start-guide/" />
+<meta property="og:site_name" content="Son Do" />
+<meta property="og:image" content="http://localhost:4000/assets/images/jekyll.png" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-02-19T00:00:00+05:30" />
+<script type="application/ld+json">
+{"headline":"Xây dựng trang cá nhân với gem Jekyll","dateModified":"2019-02-19T00:00:00+05:30","datePublished":"2019-02-19T00:00:00+05:30","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/quick-start-guide/"},"url":"http://localhost:4000/quick-start-guide/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"sondh5"},"image":"http://localhost:4000/assets/images/jekyll.png","author":{"@type":"Person","name":"sondh5"},"description":"Hướng dẫn tạo 1 trang cá nhân, static blog trong vòng 10 phút với gem Jekyll.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i"
+      rel="stylesheet">
+      
+    <link rel="shortcut icon" href="/public/favicon.ico">
+
+    <link href="/assets/css/screen.css" rel="stylesheet">
+
+    <link href="/assets/css/main.css" rel="stylesheet">
+
+    <script src="/assets/js/jquery.min.js"></script>
+
+  </head>
+
+  
+
+  
+
+  <body class="layout-post">
+
+    <!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+  <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+      <img src="/assets/images/logo.png" alt="Son Do">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+      <!-- Begin Menu -->
+
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/about">About</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">Blog</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tils">TILs</a>
+        </li>
+      </ul>
+      <!-- End Menu -->
+
+    </div>
+
+  </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+
+    <div class="site-content">
+
+      <div class="container">
+
+
+
+        <!-- Content
+================================================== -->
+        <div class="main-content">
+          <!-- Begin Article
+================================================== -->
+<div class="container">
+	<div class="row">
+
+		<!-- Post Share -->
+		<div class="col-md-2 pl-0">
+			<div class="share">
+  <p>
+    Share
+  </p>
+  <ul>
+    <li class="ml-1 mr-1">
+      <a target="_blank" href="https://twitter.com/intent/tweet?text=Xây dựng trang cá nhân với gem Jekyll&url=http://localhost:4000/quick-start-guide/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+
+    <li class="ml-1 mr-1">
+      <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/quick-start-guide/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    
+    <li class="ml-1 mr-1">
+      <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/quick-start-guide/" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+          <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+
+  </ul>
+  
+  <div class="sep">
+  </div>
+  <ul>
+    <li>
+      <a class="small smoothscroll" href="#disqus_thread"></a>
+    </li>
+  </ul>
+  
+</div>
+
+		</div>
+
+
+		<!-- Post -->
+		
+
+		<div class="col-md-9 flex-first flex-md-unordered">
+			<div class="mainheading">
+				<!-- Post Title -->
+				<h1 class="posttitle">Xây dựng trang cá nhân với gem Jekyll</h1>
+
+			</div>
+
+			<!-- Post Featured Image -->
+			<img class="featured-image img-fluid"
+				src="http://localhost:4000/assets/images/jekyll.png"
+				alt="Xây dựng trang cá nhân với gem Jekyll">
+			
+			<!-- End Featured Image -->
+
+			<!-- Post Content -->
+			<div class="article-post">
+				<p>Nếu bạn là 1 dev Ruby on Rails thì với môi trường đã có sẵn, không mất đến 5 phút để bạn có riêng cho mình 1 trang cá nhân thật ngầu theo các bước sau:</p>
+
+<h2 id="chuẩn-bị">Chuẩn bị</h2>
+<h3 id="setup-ruby">Setup Ruby</h3>
+<p>Nếu bạn là RoR dev thì có thể bỏ qua bước này, còn nếu không phải thì hãy mở terminal và chạy: <code class="language-plaintext highlighter-rouge">install ruby</code>, <code class="language-plaintext highlighter-rouge">install bundle</code></p>
+
+<h3 id="setup-repo--page">Setup repo &amp; page</h3>
+<p><strong>Tạo new repo</strong>
+<img src="https://guides.github.com/features/pages/create-new-repo-button.png" alt="" />
+để tên repo là <code class="language-plaintext highlighter-rouge">blog</code>
+<img src="https://guides.github.com/features/pages/create-new-repo-screen.png" alt="" /></p>
+
+<p><strong>Setting Github page</strong>
+Chọn setting trong repo của bạn
+<img src="https://guides.github.com/features/pages/repo-settings.png" alt="" /></p>
+
+<p>Kéo xuống phần github page và chọn master branch:
+<img src="https://guides.github.com/features/pages/launch-theme-chooser.png" alt="" /></p>
+
+<p>Vậy là xong phần chuẩn bị rồi, bắt đầu nào!</p>
+
+<h2 id="bắt-đầu">Bắt đầu</h2>
+
+<h3 id="basic">Basic</h3>
+<p>Nếu bạn muốn bắt đầu với 1 trang hoàn  toàn mới và dự mình xây dựng nó</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Install Jekyll and Bundler gems through RubyGems</span>
+<span class="n">gem</span> <span class="n">install</span> <span class="n">jekyll</span> <span class="n">bundler</span>
+
+<span class="n">jekyll</span> <span class="n">new</span> <span class="n">myblog</span>
+
+<span class="c1"># Change into your new directory</span>
+
+<span class="c1"># Build the site on the preview server</span>
+<span class="n">bundle</span> <span class="nb">exec</span> <span class="n">jekyll</span> <span class="n">serve</span>
+
+<span class="c1"># Now browse to http://localhost:4000</span>
+</code></pre></div></div>
+
+<h3 id="with-theme">With theme</h3>
+
+<p>Trên đây là 1 basic blog, còn nếu muốn dùng 1 theme màu mè hơn, đẹp hơn đã được xây dựng sẵn thì bạn có thể search google có vô vàn theme cho các bạn lựa chọn. Mình thì chọn của <a href="https://www.wowthemes.net/jekyll-themes-templates/">@wowthemes</a></p>
+
+<p>Mình chọn <a href="https://github.com/wowthemesnet/mediumish-theme-jekyll/">mediumish-theme-jekyll</a></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Clone project</span>
+<span class="n">git</span> <span class="nb">clone</span> <span class="n">git</span><span class="vi">@github</span><span class="p">.</span><span class="nf">com</span><span class="ss">:wowthemesnet</span><span class="o">/</span><span class="n">mediumish</span><span class="o">-</span><span class="n">theme</span><span class="o">-</span><span class="n">jekyll</span><span class="p">.</span><span class="nf">git</span>
+
+<span class="c1"># Rename to anything you want</span>
+<span class="n">mv</span> <span class="n">mediumish</span><span class="o">-</span><span class="n">theme</span><span class="o">-</span><span class="n">jekyll</span> <span class="n">blog</span>
+
+<span class="c1"># Change into your blog</span>
+<span class="n">cd</span> <span class="n">blog</span>
+
+<span class="c1"># After create repo on your Github named blog, set it to origin</span>
+<span class="n">git</span> <span class="n">remote</span> <span class="n">set</span><span class="o">-</span><span class="n">url</span> <span class="n">origin</span> <span class="n">git</span><span class="vi">@github</span><span class="p">.</span><span class="nf">com</span><span class="ss">:YOUR_GITHUB_ACCOUNT</span><span class="o">/</span><span class="n">blog</span><span class="p">.</span><span class="nf">git</span>
+
+<span class="c1"># Change _config.yml</span>
+<span class="ss">baseurl: </span><span class="s1">'/blog'</span>
+
+<span class="c1"># Add your change</span>
+<span class="n">git</span> <span class="n">add</span> <span class="o">-</span><span class="no">A</span>
+
+<span class="c1"># Commit them</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="s2">"Init amazing blog"</span>
+
+<span class="c1"># Push them to your repo</span>
+<span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">master</span>
+</code></pre></div></div>
+
+<p>Tận hưởng thành quả thôi. Đây là blog của mình <a href="https://sondh5.github.io/blog/">https://sondh5.github.io/blog/</a></p>
+
+<p>Let’s have fun!</p>
+
+<p>Chú ý:</p>
+<ul>
+  <li>Nếu không muốn để subpath là “/blog” thì bạn có thể đổi tên repo thành YOUR_GITHUB_ACCOUNT.github.io để có địa chỉ là YOUR_GITHUB_ACCOUNT.github.io <br />
+Đừng quên sửa lại _config.yml: <code class="language-plaintext highlighter-rouge">baseurl: ""</code></li>
+  <li>Cho người dùng mac thì nếu bị lỗi install gem ffi thì tham khảo <a href="https://github.com/ffi/ffi/issues/651">issue này</a>  và <a href="https://gist.github.com/Dreyer/0a0976f5606c0c963ab9a622f03ee26d">gist này</a>.</li>
+</ul>
+
+<hr />
+
+<p>Tham khảo:</p>
+<ul>
+  <li><a href="https://jekyllrb.com">jekyllrb.com</a></li>
+  <li><a href="https://github.com/wowthemesnet/mediumish-theme-jekyll">mediumish-theme-jekyll</a></li>
+  <li><a href="https://guides.github.com/features/pages/">github.com/features/pages/</a></li>
+</ul>
+
+			</div>
+
+			<!-- Post Date -->
+			<p>
+				<small>
+					<span class="post-date"><time class="post-date"
+							datetime="2019-02-19">19 Feb 2019</time></span>
+					
+				</small>
+			</p>
+
+			<!-- Post Categories -->
+			<div class="after-post-tags">
+				<ul class="tags">
+					
+					
+					<li>
+						<a class="smoothscroll" href="/categories.html#jekyll">Jekyll</a>
+					</li>
+					
+				</ul>
+			</div>
+			<!-- End Categories -->
+
+			<!-- Prev/Next -->
+			<div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+				
+				
+				<a class="next d-block col-md-6 text-lg-right" href="http://localhost:4000/you-dont-know-rails-log/">Rails Logger and Rails Logging Best Practices
+					&raquo; </a>
+				
+				<div class="clearfix"></div>
+			</div>
+			<!-- End Categories -->
+
+		</div>
+		<!-- End Post -->
+
+	</div>
+</div>
+<!-- End Article
+================================================== -->
+
+
+
+<!-- Begin Comments
+================================================== -->
+
+<div class="container">
+	<div id="comments" class="row justify-content-center mb-5">
+		<div class="col-md-8">
+			<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'sondh5';
+    var disqus_developer = 0;
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+		</div>
+	</div>
+</div>
+
+<!--End Comments
+================================================== -->
+
+        </div>
+
+        <!-- Categories Jumbotron
+================================================== -->
+        <div class="jumbotron fortags">
+          <div class="d-md-flex h-100">
+            <div class="col-md-4 transpdark align-self-center text-center h-100">
+              <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span
+                    class="d-none d-md-inline">→</span></h2>
+              </div>
+            </div>
+            <div class="col-md-8 p-5 align-self-center text-center">
+              
+              
+              
+              <a href="/categories#jekyll">Jekyll
+                (1)</a>
+              
+              <a href="/categories#rails">Rails
+                (5)</a>
+              
+              <a href="/categories#tils">TILs
+                (12)</a>
+              
+              <a href="/categories#git">Git
+                (2)</a>
+              
+              <a href="/categories#memo">Memo
+                (11)</a>
+              
+              <a href="/categories#mysql">MySQL
+                (1)</a>
+              
+              <a href="/categories#bootstrap">Bootstrap
+                (1)</a>
+              
+              <a href="/categories#html">HTML
+                (1)</a>
+              
+              <a href="/categories#rails">rails
+                (5)</a>
+              
+              <a href="/categories#ruby">ruby
+                (3)</a>
+              
+              <a href="/categories#server">Server
+                (1)</a>
+              
+              <a href="/categories#other">Other
+                (1)</a>
+              
+              <a href="/categories#sql">SQL
+                (1)</a>
+              
+              
+              
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Begin Footer
+  ================================================== -->
+        <footer class="footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 text-center text-lg-left">
+              </div>
+              <div class="col-md-6 col-sm-6 text-center text-lg-right">
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll
+                  Theme</a> by WowThemes.net <br>
+                  Customize by <a target="_blank" href="https://www.facebook.com/sondh5/">Son Do</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- End Footer
+  ================================================== -->
+
+      </div>
+      <!-- /.container -->
+    </div>
+
+
+
+
+    <!-- /.site-content-->
+
+<!-- Scripts
+================================================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"></script>
+
+    <script src="/assets/js/mediumish.js"></script>
+
+    <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script id="dsq-count-scr" src="//sondh5.disqus.com/count.js"></script>
+
+  </body>
+
+</html>

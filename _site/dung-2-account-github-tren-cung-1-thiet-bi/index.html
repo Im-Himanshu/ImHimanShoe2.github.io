@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/assets/images/logo.png">
+
+    <title>Dùng 2 account github trên cùng 1 thiết bị | Son Do</title>
+
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Dùng 2 account github trên cùng 1 thiết bị | Son Do</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Dùng 2 account github trên cùng 1 thiết bị" />
+<meta name="author" content="sondh5" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Config lại file ~/.ssh/config" />
+<meta property="og:description" content="Config lại file ~/.ssh/config" />
+<link rel="canonical" href="http://localhost:4000/dung-2-account-github-tren-cung-1-thiet-bi/" />
+<meta property="og:url" content="http://localhost:4000/dung-2-account-github-tren-cung-1-thiet-bi/" />
+<meta property="og:site_name" content="Son Do" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-04-07T00:00:00+05:30" />
+<script type="application/ld+json">
+{"headline":"Dùng 2 account github trên cùng 1 thiết bị","dateModified":"2019-04-07T00:00:00+05:30","datePublished":"2019-04-07T00:00:00+05:30","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/dung-2-account-github-tren-cung-1-thiet-bi/"},"url":"http://localhost:4000/dung-2-account-github-tren-cung-1-thiet-bi/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"sondh5"},"author":{"@type":"Person","name":"sondh5"},"description":"Config lại file ~/.ssh/config","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i"
+      rel="stylesheet">
+      
+    <link rel="shortcut icon" href="/public/favicon.ico">
+
+    <link href="/assets/css/screen.css" rel="stylesheet">
+
+    <link href="/assets/css/main.css" rel="stylesheet">
+
+    <script src="/assets/js/jquery.min.js"></script>
+
+  </head>
+
+  
+
+  
+
+  <body class="layout-tils_layout">
+
+    <!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+  <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+      <img src="/assets/images/logo.png" alt="Son Do">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+      <!-- Begin Menu -->
+
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/about">About</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">Blog</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tils">TILs</a>
+        </li>
+      </ul>
+      <!-- End Menu -->
+
+    </div>
+
+  </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+
+    <div class="site-content">
+
+      <div class="container">
+
+
+
+        <!-- Content
+================================================== -->
+        <div class="main-content">
+          <!-- Begin Article
+================================================== -->
+<div class="container">
+	<div class="row">
+
+		<!-- Post Share -->
+		<div class="col-md-2 pl-0">
+			<div class="share">
+  <p>
+    Share
+  </p>
+  <ul>
+    <li class="ml-1 mr-1">
+      <a target="_blank" href="https://twitter.com/intent/tweet?text=Dùng 2 account github trên cùng 1 thiết bị&url=http://localhost:4000/dung-2-account-github-tren-cung-1-thiet-bi/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+
+    <li class="ml-1 mr-1">
+      <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/dung-2-account-github-tren-cung-1-thiet-bi/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    
+    <li class="ml-1 mr-1">
+      <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/dung-2-account-github-tren-cung-1-thiet-bi/" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+          <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+
+  </ul>
+  
+  <div class="sep">
+  </div>
+  <ul>
+    <li>
+      <a class="small smoothscroll" href="#disqus_thread"></a>
+    </li>
+  </ul>
+  
+</div>
+
+		</div>
+
+
+		<!-- Post -->
+		
+
+		<div class="col-md-9 flex-first flex-md-unordered">
+			<div class="mainheading">
+				<!-- Post Title -->
+				<h1 class="posttitle">Dùng 2 account github trên cùng 1 thiết bị</h1>
+
+			</div>
+
+			<!-- Post Featured Image -->
+			
+			<!-- End Featured Image -->
+
+			<!-- Post Content -->
+			<div class="article-post">
+				<p>Config lại file <code class="language-plaintext highlighter-rouge">~/.ssh/config</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Account của công ty</span>
+<span class="no">Host</span> <span class="n">github</span><span class="p">.</span><span class="nf">com</span>
+<span class="no">HostName</span> <span class="n">github</span><span class="p">.</span><span class="nf">com</span>
+<span class="no">User</span> <span class="n">git</span>
+<span class="no">IdentityFile</span> <span class="o">~</span><span class="sr">/.ssh/i</span><span class="n">d_rsa</span>
+
+<span class="c1"># Account cá nhân</span>
+<span class="no">Host</span> <span class="n">github</span><span class="o">-</span><span class="n">me</span>
+<span class="no">HostName</span> <span class="n">github</span><span class="p">.</span><span class="nf">com</span>
+<span class="no">User</span> <span class="n">git</span>
+<span class="no">IdentityFile</span> <span class="o">~</span><span class="sr">/.ssh/i</span><span class="n">d_rsa_me</span>
+</code></pre></div></div>
+
+<p>Khi Clone thì chú ý url, sửa <code class="language-plaintext highlighter-rouge">git@github.com</code> thành <code class="language-plaintext highlighter-rouge">git@github-me</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github-me:account_name/repo_name.git
+
+</code></pre></div></div>
+
+<p>Check lại remote:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote -v
+origin	git@github-me:account_name/repo_name.git (fetch)
+origin	git@github-me:account_name/repo_name.git (push)
+</code></pre></div></div>
+
+<h5 id="config-author">Config author</h5>
+<ul>
+  <li>Add config system
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># /etc/gitconfig</span>
+<span class="p">[</span><span class="n">user</span><span class="p">]</span>
+ <span class="n">email</span> <span class="o">=</span> <span class="n">account</span><span class="vi">@company</span><span class="p">.</span><span class="nf">com</span>
+ <span class="nb">name</span> <span class="o">=</span> <span class="n">company</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add config local
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># your_personal_repo/.git/config</span>
+<span class="p">[</span><span class="n">user</span><span class="p">]</span>
+ <span class="n">email</span> <span class="o">=</span> <span class="n">account</span><span class="vi">@me</span><span class="p">.</span><span class="nf">com</span>
+ <span class="nb">name</span> <span class="o">=</span> <span class="n">me</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+			</div>
+
+			<!-- Post Date -->
+			<p>
+				<small>
+					<span class="post-date"><time class="post-date"
+							datetime="2019-04-07">07 Apr 2019</time></span>
+					
+				</small>
+			</p>
+
+			<!-- Post Categories -->
+			<div class="after-post-tags">
+				<ul class="tags">
+					
+					
+					<li>
+						<a class="smoothscroll" href="/categories.html#git">Git</a>
+					</li>
+					
+					<li>
+						<a class="smoothscroll" href="/categories.html#tils">TILs</a>
+					</li>
+					
+				</ul>
+			</div>
+			<!-- End Categories -->
+
+			<!-- Prev/Next -->
+			<div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+				
+				<a class="prev d-block col-md-6" href="http://localhost:4000/you-dont-know-rails-log/"> &laquo;
+					Rails Logger and Rails Logging Best Practices</a>
+				
+				
+				<a class="next d-block col-md-6 text-lg-right" href="http://localhost:4000/be-careful-when-use-find_by/">Be careful when use find_by
+					&raquo; </a>
+				
+				<div class="clearfix"></div>
+			</div>
+			<!-- End Categories -->
+
+		</div>
+		<!-- End Post -->
+
+	</div>
+</div>
+<!-- End Article
+================================================== -->
+
+        </div>
+
+        <!-- Categories Jumbotron
+================================================== -->
+        <div class="jumbotron fortags">
+          <div class="d-md-flex h-100">
+            <div class="col-md-4 transpdark align-self-center text-center h-100">
+              <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span
+                    class="d-none d-md-inline">→</span></h2>
+              </div>
+            </div>
+            <div class="col-md-8 p-5 align-self-center text-center">
+              
+              
+              
+              <a href="/categories#jekyll">Jekyll
+                (1)</a>
+              
+              <a href="/categories#rails">Rails
+                (5)</a>
+              
+              <a href="/categories#tils">TILs
+                (12)</a>
+              
+              <a href="/categories#git">Git
+                (2)</a>
+              
+              <a href="/categories#memo">Memo
+                (11)</a>
+              
+              <a href="/categories#mysql">MySQL
+                (1)</a>
+              
+              <a href="/categories#bootstrap">Bootstrap
+                (1)</a>
+              
+              <a href="/categories#html">HTML
+                (1)</a>
+              
+              <a href="/categories#rails">rails
+                (5)</a>
+              
+              <a href="/categories#ruby">ruby
+                (3)</a>
+              
+              <a href="/categories#server">Server
+                (1)</a>
+              
+              <a href="/categories#other">Other
+                (1)</a>
+              
+              <a href="/categories#sql">SQL
+                (1)</a>
+              
+              
+              
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Begin Footer
+  ================================================== -->
+        <footer class="footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 text-center text-lg-left">
+              </div>
+              <div class="col-md-6 col-sm-6 text-center text-lg-right">
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll
+                  Theme</a> by WowThemes.net <br>
+                  Customize by <a target="_blank" href="https://www.facebook.com/sondh5/">Son Do</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- End Footer
+  ================================================== -->
+
+      </div>
+      <!-- /.container -->
+    </div>
+
+
+
+
+    <!-- /.site-content-->
+
+<!-- Scripts
+================================================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"></script>
+
+    <script src="/assets/js/mediumish.js"></script>
+
+    <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script id="dsq-count-scr" src="//sondh5.disqus.com/count.js"></script>
+
+  </body>
+
+</html>

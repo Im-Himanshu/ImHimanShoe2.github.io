@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/assets/images/logo.png">
+
+    <title>Rails Logger and Rails Logging Best Practices | Son Do</title>
+
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Rails Logger and Rails Logging Best Practices | Son Do</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Rails Logger and Rails Logging Best Practices" />
+<meta name="author" content="sondh5" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Logging provides critical value to applications with insight to usage, stats, and metrics, and saves us when debugging a problem. But we often leave logging to poorly implemented afterthoughts. So what should we know to get the most out of our logging?" />
+<meta property="og:description" content="Logging provides critical value to applications with insight to usage, stats, and metrics, and saves us when debugging a problem. But we often leave logging to poorly implemented afterthoughts. So what should we know to get the most out of our logging?" />
+<link rel="canonical" href="http://localhost:4000/you-dont-know-rails-log/" />
+<meta property="og:url" content="http://localhost:4000/you-dont-know-rails-log/" />
+<meta property="og:site_name" content="Son Do" />
+<meta property="og:image" content="https://stackify.com/wp-content/uploads/2019/02/Rails-Logger-and-Rails-Logging-Best-Practices-881x441.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-03-28T00:00:00+05:30" />
+<script type="application/ld+json">
+{"headline":"Rails Logger and Rails Logging Best Practices","dateModified":"2019-03-28T00:00:00+05:30","datePublished":"2019-03-28T00:00:00+05:30","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/you-dont-know-rails-log/"},"url":"http://localhost:4000/you-dont-know-rails-log/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"sondh5"},"image":"https://stackify.com/wp-content/uploads/2019/02/Rails-Logger-and-Rails-Logging-Best-Practices-881x441.jpg","author":{"@type":"Person","name":"sondh5"},"description":"Logging provides critical value to applications with insight to usage, stats, and metrics, and saves us when debugging a problem. But we often leave logging to poorly implemented afterthoughts. So what should we know to get the most out of our logging?","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i"
+      rel="stylesheet">
+      
+    <link rel="shortcut icon" href="/public/favicon.ico">
+
+    <link href="/assets/css/screen.css" rel="stylesheet">
+
+    <link href="/assets/css/main.css" rel="stylesheet">
+
+    <script src="/assets/js/jquery.min.js"></script>
+
+  </head>
+
+  
+
+  
+
+  <body class="layout-post">
+
+    <!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+  <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+      <img src="/assets/images/logo.png" alt="Son Do">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+      <!-- Begin Menu -->
+
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/about">About</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">Blog</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tils">TILs</a>
+        </li>
+      </ul>
+      <!-- End Menu -->
+
+    </div>
+
+  </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+
+    <div class="site-content">
+
+      <div class="container">
+
+
+
+        <!-- Content
+================================================== -->
+        <div class="main-content">
+          <!-- Begin Article
+================================================== -->
+<div class="container">
+	<div class="row">
+
+		<!-- Post Share -->
+		<div class="col-md-2 pl-0">
+			<div class="share">
+  <p>
+    Share
+  </p>
+  <ul>
+    <li class="ml-1 mr-1">
+      <a target="_blank" href="https://twitter.com/intent/tweet?text=Rails Logger and Rails Logging Best Practices&url=http://localhost:4000/you-dont-know-rails-log/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+
+    <li class="ml-1 mr-1">
+      <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/you-dont-know-rails-log/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    
+    <li class="ml-1 mr-1">
+      <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/you-dont-know-rails-log/" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+          <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+
+  </ul>
+  
+  <div class="sep">
+  </div>
+  <ul>
+    <li>
+      <a class="small smoothscroll" href="#disqus_thread"></a>
+    </li>
+  </ul>
+  
+</div>
+
+		</div>
+
+
+		<!-- Post -->
+		
+
+		<div class="col-md-9 flex-first flex-md-unordered">
+			<div class="mainheading">
+				<!-- Post Title -->
+				<h1 class="posttitle">Rails Logger and Rails Logging Best Practices</h1>
+
+			</div>
+
+			<!-- Post Featured Image -->
+			<img class="featured-image img-fluid"
+				src="https://stackify.com/wp-content/uploads/2019/02/Rails-Logger-and-Rails-Logging-Best-Practices-881x441.jpg"
+				alt="Rails Logger and Rails Logging Best Practices">
+			
+			<!-- End Featured Image -->
+
+			<!-- Post Content -->
+			<div class="article-post">
+				<p>Logging provides critical value to applications with insight to usage, stats, and metrics, and saves us when debugging a problem. But we often leave logging to poorly implemented afterthoughts. So what should we know to get the most out of our logging?</p>
+
+<p>We will look at the Rails logger and some logging best practices.</p>
+
+<h2 id="what-is-the-rails-logger">What is the Rails Logger?</h2>
+
+<p>When first learning <a href="https://www.ruby-lang.org/en/">Ruby</a>, many of us rely on the puts command to log information while debugging code locally. And it <em>is</em> an easy way to get information out quickly. However, that’s where puts’ usefulness usually stops.</p>
+
+<p>When building an application, using a <a href="https://stackify.com/ruby-on-rails-blogs-youtube-channels/">Rails</a> logger or similar gem puts you on the path to proper application logging. To handle logs in a running application, the Rails logger provides additional functionality.</p>
+
+<ul>
+  <li>specifying the logging level</li>
+  <li>tagging similar logs</li>
+  <li>auto-formatting log messages with relevant information</li>
+</ul>
+
+<p>Let’s look at the basic setup of the Rails logger and how to customize it for our needs.</p>
+
+<h2 id="basic-setup">Basic Setup</h2>
+
+<p>When setting up our Rails logger, we have several options to consider. Here are a few.</p>
+
+<h3 id="configure-logger-properties">Configure logger properties</h3>
+
+<p>In your environment.rb, add the following:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+<span class="n">config</span><span class="p">.</span><span class="nf">logger</span> <span class="o">=</span> <span class="no">ActiveSupport</span><span class="o">::</span><span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"log/</span><span class="si">#{</span><span class="no">Rails</span><span class="p">.</span><span class="nf">env</span><span class="si">}</span><span class="s2">.log"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Congrats! You have logging. Now if you use <em>Rails.logger.info “Check out this info!”</em> you’ll see the following in your output:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">I</span><span class="p">,</span> <span class="p">[</span><span class="mi">2019</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span><span class="no">T05</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mf">33.432311</span> <span class="c1">#123] INFO -- Main: Check out this info!</span>
+</code></pre></div></div>
+
+<p>Of course, we don’t want to just start there. Our default logger logs everything. And that might be a bit much for normal production use. So let’s change that.</p>
+
+<h4 id="logging-level">Logging level</h4>
+
+<p>Once we realize we don’t want everything logged all the time, we may decide to set our logger level. In fact, we should consider setting different logging levels for different environments. In Rails, we can set different configurations for each environment in our environment.rb files, like development.rb or production.rb. We’ll talk more about logging levels in the best practices section.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+<span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">DEBUG</span>
+</code></pre></div></div>
+
+<p>If you don’t know what to set as your logging level, don’t worry. Rails has you covered. It defaults to INFO in production and DEBUG in testing and development.</p>
+
+<h4 id="logging-format">Logging format</h4>
+
+<p>After setting the logging level, let’s improve readability by setting a simple logging format.</p>
+
+<p>First, let’s change the datetime format of the logging messages, continuing on from our configuration above.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span> <span class="o">=</span> <span class="no">Logger</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">STDOUT</span><span class="p">)</span>
+<span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">level</span> <span class="o">=</span> <span class="no">Logger</span><span class="o">::</span><span class="no">DEBUG</span>
+<span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">datetime_format</span> <span class="o">=</span> <span class="s2">"%Y-%m-%d %H:%M:%S"</span>
+</code></pre></div></div>
+
+<p>After modifying the datetime, we’ll see logs that look more like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">I</span><span class="p">,</span> <span class="p">[</span><span class="mi">2019</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span> <span class="mo">05</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">33</span> <span class="c1">#123] INFO -- Main: Check out this info!</span>
+</code></pre></div></div>
+
+<p>As for the message format that gets printed to the log, we have some additional changes we can make. For example, let’s say we don’t like the standard output and would like to mix things up a bit. This can be done in one of two ways—first, with configuration.</p>
+
+<p>As shown below, we’re setting the format specification to show the log message’s datetime and message and the program’s name.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># log formatter</span>
+<span class="n">logger</span><span class="p">.</span><span class="nf">formatter</span> <span class="o">=</span> <span class="nb">proc</span> <span class="k">do</span> <span class="o">|</span> <span class="n">severity</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">progname</span><span class="p">,</span> <span class="n">msg</span> <span class="o">|</span>
+    <span class="s2">"</span><span class="si">#{</span><span class="n">datetime</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">severity</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">msg</span><span class="si">}</span><span class="s2"> from </span><span class="si">#{</span><span class="n">progname</span><span class="si">}</span><span class="s2"> </span><span class="se">\n</span><span class="s2">"</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Alternatively, we can also change the format by overriding the logger’s format method. In this case, we create our own custom formatter class that does the same thing as the example above.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyAppFormatter</span> <span class="o">&lt;</span> <span class="no">Logger</span><span class="o">::</span><span class="no">Formatter</span>
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">severity</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">programName</span><span class="p">,</span> <span class="n">message</span><span class="p">)</span>
+        <span class="s2">"</span><span class="si">#{</span><span class="n">datetime</span><span class="si">}</span><span class="s2">, </span><span class="si">#{</span><span class="n">severity</span><span class="si">}</span><span class="s2">: </span><span class="si">#{</span><span class="n">message</span><span class="si">}</span><span class="s2"> from </span><span class="si">#{</span><span class="n">programName</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Both of these will yield the following log message format:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mi">2019</span><span class="o">-</span><span class="mo">01</span><span class="o">-</span><span class="mo">04</span> <span class="mo">05</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">33</span><span class="p">,</span> <span class="no">INFO</span><span class="p">:</span> <span class="no">Check</span> <span class="n">out</span> <span class="n">this</span> <span class="n">info!</span> <span class="n">from</span> <span class="no">Main</span>
+</code></pre></div></div>
+
+<p>As a final step, we can also modify the format so it prints out JSON.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">class</span> <span class="nc">MyAppFormatter</span> <span class="o">&lt;</span> <span class="no">Logger</span><span class="o">::</span><span class="no">Formatter</span>
+    <span class="k">def</span> <span class="nf">call</span><span class="p">(</span><span class="n">severity</span><span class="p">,</span> <span class="n">time</span><span class="p">,</span> <span class="n">progname</span><span class="p">,</span> <span class="n">msg</span><span class="p">)</span>
+        <span class="sx">%Q | </span><span class="p">{</span><span class="ss">time: </span><span class="s2">"</span><span class="si">#{</span><span class="n">datetime</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="ss">severity: </span><span class="s2">"</span><span class="si">#{</span><span class="n">severity</span><span class="si">}</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="ss">message: </span><span class="s2">"</span><span class="si">#{</span><span class="n">msg</span><span class="si">}</span><span class="s2"> from </span><span class="si">#{</span><span class="n">progname</span><span class="si">}</span><span class="s2">"</span><span class="p">}\</span><span class="n">n</span> <span class="o">|</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>This might be helpful when using log aggregators that allow easy querying. The results will look like the following:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="s2">"time"</span><span class="p">:</span> <span class="s2">"2019-01-04 05:14:33"</span><span class="p">,</span>
+    <span class="s2">"severity"</span><span class="p">:</span> <span class="s2">"INFO"</span><span class="p">,</span>
+    <span class="s2">"message"</span><span class="p">:</span> <span class="s2">"Check out this info! from Main"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>Now, why switch from just making a configuration change for this logging? Why go the route of creating a formatter class? Well, ultimately, based on your needs you may want to throw in some fancier logic in your formatter. Perhaps you’ll want to log information in a different format based on what’s in the message. Or what severity it is. Using classes makes an easier transition to complex logic for logs.</p>
+
+<h3 id="using-the-logger">Using the logger</h3>
+
+<p>Before we move on to best practices, I want to make one additional note. When we’re in a Ruby controller or model, we can log by just adding <em>logger.info ‘your message’</em>.  But if you’re in a service object or plain old Ruby object, you’ll have to specify the logger, like this:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logger</span> <span class="o">=</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span>
+<span class="n">logger</span><span class="p">.</span><span class="nf">info</span> <span class="s1">'your message goes here'</span>
+<span class="sr">//</span> <span class="n">or</span>
+<span class="no">Rails</span><span class="p">.</span><span class="nf">logger</span><span class="p">.</span><span class="nf">info</span> <span class="s1">'whatever'</span>
+</code></pre></div></div>
+
+<p>For those of you who’ve been in the Ruby or Rails ecosystem for a while, that may be a no-brainer. But for others, that’s something you may not realize right away. And I want to reduce confusion where I can.</p>
+
+<h2 id="best-practices">Best Practices</h2>
+
+<p>Okay, so now that we know the basics of our Rails logger, what do we need to know next? Well, how about best practices?</p>
+
+<h3 id="logger-levels">Logger levels</h3>
+
+<p>Let’s talk more about logging levels. As mentioned earlier, we can set different logging levels for each environment. Typically you’d want more fine-grained logging in environments where you’re actively developing and testing. Production might not benefit from all the noise of debug statements unless there’s an actual issue.</p>
+
+<p>So let’s review the logging levels available and what they mean.</p>
+
+<ul>
+  <li><strong>Debug</strong>: The debug level should be used for detailed messages that assist in debugging. Typically, these logs are used by developers or system admins who need as much detail as possible about what might be going on in the system. In Ruby, this is the most verbose level.</li>
+  <li><strong>Info</strong>: In the case of info-level logs, these provide information regarding normal application processing. This could be log information about services starting and stopping, or application metrics.</li>
+  <li><strong>Warn</strong>: Warnings indicate something’s wrong. It might not be an error since the application may have recovered. Or, the warning may inform us of a rare business scenario we want to track.</li>
+  <li><strong>Error</strong>: When we see errors, we know something failed. Perhaps a transaction was unable to update the database. Or maybe a dependency couldn’t be reached. Overall the application still functions, but things aren’t working properly.</li>
+  <li><strong>Fatal</strong>: Fatal logs should only be used when something happens that causes the application to crash. This type of error may need support or intervention from the development team. It shouldn’t be used for general business errors.</li>
+  <li><strong>Unknown</strong>: The unknown logging level will catch anything that doesn’t have a known level. It’s a catch-all for anything that might sneak through.</li>
+</ul>
+
+<p>So, when logging messages to yourself or your band of merry developers, make sure to log at the correct level. It will simplify debugging and help reduce log pollution when things are logged at too high a level.</p>
+
+<h3 id="logging-computations-in-blocks">Logging computations in blocks</h3>
+
+<p>Some of you may have noticed we can log in different ways. For example, we can log message strings:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logger</span><span class="p">.</span><span class="nf">debug</span> <span class="s2">"Logging order total "</span> <span class="o">+</span> <span class="n">orderTotal</span> <span class="o">+</span> <span class="s2">" can be an expensive operation"</span>
+</code></pre></div></div>
+<p>We can also log in a block:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">logger</span><span class="p">.</span><span class="nf">debug</span> <span class="p">{</span><span class="s2">"Logging order total "</span> <span class="o">+</span> <span class="n">orderTotal</span> <span class="o">+</span> <span class="s2">" can be an expensive operation"</span><span class="p">}</span>
+</code></pre></div></div>
+<p>The two statements seem fairly similar. However, since in the second example we’re technically logging a block of code (indicated by the curly braces), the string concatenation and any other processing required for the log message aren’t completed unless the log level is set to debug. In contrast, in the first example the application concatenates the string before inspecting whether the log level applies.</p>
+
+<p><img src="https://stackify.com/wp-content/uploads/2019/02/image-4-1024x683.jpeg" alt="" /></p>
+
+<h3 id="think-beyond-log-files">Think beyond log files</h3>
+
+<p>By default, we typically log into environment-specific log files in our Rails app. However, logging into a server in order to grep or tail a file lacks any real-world usability. We need a way to mine our logs for information as well as stay on top of issues and <a href="https://stackify.com/track-software-metrics/">metrics</a>.</p>
+
+<p>Since searching files isn’t sustainable, what is? First, let’s consider a tool like <a href="https://stackify.com/retrace/">Retrace</a>.</p>
+
+<p><img src="https://stackify.com/wp-content/uploads/2019/02/Screen-Shot-2019-02-21-at-7.23.19-AM-1024x522.png" alt="Retrace Ruby Logs" /></p>
+
+<p>With Retrace, you can consolidate and view logs easily. You can also easily search and filter for logs. And, most interestingly, you can analyze trends in the logs. Installing and configuring Retrace for your Rails app involves <a href="https://docs.stackify.com/docs/errors-and-logs-configure-ruby-applications">just a few steps</a>.</p>
+
+<h3 id="using-tags">Using tags</h3>
+
+<p>Another great feature of the Rails logger involves tags. Tags help categorize different logs for different use cases.</p>
+
+<p>You can tag user-generated request UUIDs, particular logging use cases, or relevant categories based on the code that executes. For example, let’s consider tagging logs with a request ID. Why would we want to do this? Well, it will provide an easy way to see all the log messages related to a particular request. This helps tremendously when debugging an issue. You’re able to see everything that happened to that request with some simple configuration.</p>
+
+<p>So let’s add our request ID to our log tags.</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">config</span><span class="p">.</span><span class="nf">log_tags</span> <span class="o">=</span> <span class="p">[</span><span class="ss">:request_id</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>Now our log messages will include the request ID in every log message that’s part of the requesting thread.</p>
+
+<p>Once you start using tags, you’ll find more and more creative uses that provide value.</p>
+
+<h3 id="log-the-relevant-info">Log the relevant info</h3>
+
+<p>Next, let’s consider the user of the logs, who might be you; r it might be someone on your team, in operations, or in customer support. And these users may be in different time zones, have different knowledge of the application, or have different skill levels. Additionally, the logs may serve different use cases. Logs meant for metric gathering may need a completely different message format than logs meant for debugging server failures.</p>
+
+<p>So whenever we log messages, we should consider a few questions:</p>
+
+<ul>
+  <li>What use case does this log message need to satisfy?</li>
+  <li>Who or what will be reading this log message?</li>
+  <li>What data will provide the relevant metrics to help the target audience?</li>
+</ul>
+
+<p>These questions can be general and apply to most applications. They can also be product-specific. Different business use cases may require different information logged at different granularities. You’ll have to determine for yourself what the answers are. For now, let’s look at a generic example.</p>
+
+<p>Let’s say we want to log client requests to our application. And let’s also say we have two use cases for this:</p>
+
+<ul>
+  <li>Help troubleshoot problems with requests.</li>
+  <li>Gather metrics around utilization.</li>
+</ul>
+
+<p>Sometimes you can satisfy both in one log message. However, other times you may want separate log messages for each use case. And then you can use tagging to differentiate the purpose of the log.</p>
+
+<p>Let’s look at these two use cases separately.</p>
+
+<h3 id="help-troubleshoot-requests">Help troubleshoot requests</h3>
+
+<p>When considering our three questions, the first one is now answered. We want logs that help troubleshoot issues with requests. For the second question, we want to consider who reads the log message. In most cases, this will be a developer or support person with either surface-level or in-depth knowledge of the application.</p>
+
+<p>Now let’s answer the third question. What data provides the relevant metrics? Here’s a list I would want to see as a developer or support person:</p>
+
+<ul>
+  <li>Date/Time</li>
+  <li>Request ID—a unique identifier for this request that gets used throughout the call stack</li>
+  <li>Client ID</li>
+  <li>HTTP method</li>
+  <li>URL path</li>
+  <li>Response status for failed requests</li>
+  <li>Error message</li>
+  <li>Request parameters</li>
+  <li>Relevant variables within the application</li>
+  <li>Call stack</li>
+</ul>
+
+<p>Are there others that might be helpful? As you can see, there’s a lot of info that can provide insight into our requests.</p>
+
+<h3 id="gather-metrics">Gather metrics</h3>
+
+<p>For our second example, we want to log for metrics gathering. Typically, the target of this data will be a dashboard or alerting system. The dashboard will show trends in data, while an alerting system will trigger pages or notifications based on changes in those trends.</p>
+
+<p>For instance, let’s say one of our endpoints has successful responses 98% of the time. But at some point, that percentage drops to 80% or even lower. We may want to page our team to investigate the downward trend. And our team would want to look at the logs in our first example above.</p>
+
+<p>But what would our dashboards and alerts need?</p>
+
+<ul>
+  <li>Date/Time</li>
+  <li>HTTP method</li>
+  <li>URL path</li>
+  <li>Response status for both successful and failed requests</li>
+  <li>Maybe client ID, depending on granularity</li>
+  <li>Latency</li>
+</ul>
+
+<p>We don’t need as much information in this log because no one will be using it to diagnose the issue. It’s only there to keep track of outcomes.</p>
+
+<p>As you can see, log messages might need specialization for particular use cases. Sometimes the same log message will provide data for both, but other times we’ll have to design the right solution for the job.</p>
+
+<p><img src="https://stackify.com/wp-content/plugins/wp-advanced-image-lazy-load/img/grey.gif" alt="" /></p>
+
+<h3 id="your-logs-are-code-too">Your logs are code, too</h3>
+
+<p>Now that we’ve gone over the basics of Rails logging as well as some best practices, let’s consider some parting words.</p>
+
+<p>Often, not much thought is put into logging. In fact, we usually only notice how bad logs are when we need good logging the most, like during a production incident or when debugging a sneaky bug. But if we put some thought into our logging strategies beforehand, we can cover most of our bases. Will we need to modify our format or change what we’re logging as we learn more? Yes, of course. But that doesn’t mean we should wait until that nasty problem in production surfaces before we do something about our logs.</p>
+
+<p>Don’t underestimate the power of logs. Learn to use them to their full potential.</p>
+
+<hr />
+<p>Đây là bài dịch, bài gốc mời các bạn tham khảo: <a href="https://stackify.com/rails-logger-and-rails-logging-best-practices/">Rails Logger and Rails Logging Best Practices</a></p>
+
+			</div>
+
+			<!-- Post Date -->
+			<p>
+				<small>
+					<span class="post-date"><time class="post-date"
+							datetime="2019-03-28">28 Mar 2019</time></span>
+					
+				</small>
+			</p>
+
+			<!-- Post Categories -->
+			<div class="after-post-tags">
+				<ul class="tags">
+					
+					
+					<li>
+						<a class="smoothscroll" href="/categories.html#rails">Rails</a>
+					</li>
+					
+				</ul>
+			</div>
+			<!-- End Categories -->
+
+			<!-- Prev/Next -->
+			<div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+				
+				<a class="prev d-block col-md-6" href="http://localhost:4000/quick-start-guide/"> &laquo;
+					Xây dựng trang cá nhân với gem Jekyll</a>
+				
+				
+				<a class="next d-block col-md-6 text-lg-right" href="http://localhost:4000/dung-2-account-github-tren-cung-1-thiet-bi/">Dùng 2 account github trên cùng 1 thiết bị
+					&raquo; </a>
+				
+				<div class="clearfix"></div>
+			</div>
+			<!-- End Categories -->
+
+		</div>
+		<!-- End Post -->
+
+	</div>
+</div>
+<!-- End Article
+================================================== -->
+
+
+
+<!-- Begin Comments
+================================================== -->
+
+<div class="container">
+	<div id="comments" class="row justify-content-center mb-5">
+		<div class="col-md-8">
+			<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'sondh5';
+    var disqus_developer = 0;
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+		</div>
+	</div>
+</div>
+
+<!--End Comments
+================================================== -->
+
+        </div>
+
+        <!-- Categories Jumbotron
+================================================== -->
+        <div class="jumbotron fortags">
+          <div class="d-md-flex h-100">
+            <div class="col-md-4 transpdark align-self-center text-center h-100">
+              <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span
+                    class="d-none d-md-inline">→</span></h2>
+              </div>
+            </div>
+            <div class="col-md-8 p-5 align-self-center text-center">
+              
+              
+              
+              <a href="/categories#jekyll">Jekyll
+                (1)</a>
+              
+              <a href="/categories#rails">Rails
+                (5)</a>
+              
+              <a href="/categories#tils">TILs
+                (12)</a>
+              
+              <a href="/categories#git">Git
+                (2)</a>
+              
+              <a href="/categories#memo">Memo
+                (11)</a>
+              
+              <a href="/categories#mysql">MySQL
+                (1)</a>
+              
+              <a href="/categories#bootstrap">Bootstrap
+                (1)</a>
+              
+              <a href="/categories#html">HTML
+                (1)</a>
+              
+              <a href="/categories#rails">rails
+                (5)</a>
+              
+              <a href="/categories#ruby">ruby
+                (3)</a>
+              
+              <a href="/categories#server">Server
+                (1)</a>
+              
+              <a href="/categories#other">Other
+                (1)</a>
+              
+              <a href="/categories#sql">SQL
+                (1)</a>
+              
+              
+              
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Begin Footer
+  ================================================== -->
+        <footer class="footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 text-center text-lg-left">
+              </div>
+              <div class="col-md-6 col-sm-6 text-center text-lg-right">
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll
+                  Theme</a> by WowThemes.net <br>
+                  Customize by <a target="_blank" href="https://www.facebook.com/sondh5/">Son Do</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- End Footer
+  ================================================== -->
+
+      </div>
+      <!-- /.container -->
+    </div>
+
+
+
+
+    <!-- /.site-content-->
+
+<!-- Scripts
+================================================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"></script>
+
+    <script src="/assets/js/mediumish.js"></script>
+
+    <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script id="dsq-count-scr" src="//sondh5.disqus.com/count.js"></script>
+
+  </body>
+
+</html>

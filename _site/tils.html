@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/assets/images/logo.png">
+
+    <title>Today I Learned | Son Do</title>
+
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Today I Learned | Son Do</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Today I Learned" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Personal blog" />
+<meta property="og:description" content="Personal blog" />
+<link rel="canonical" href="http://localhost:4000/tils" />
+<meta property="og:url" content="http://localhost:4000/tils" />
+<meta property="og:site_name" content="Son Do" />
+<script type="application/ld+json">
+{"headline":"Today I Learned","@type":"WebPage","url":"http://localhost:4000/tils","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"}},"description":"Personal blog","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i"
+      rel="stylesheet">
+
+    <link rel="shortcut icon" href="/public/favicon.ico">
+
+    <link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="fonts/flaticon/flaticon.css">
+
+    <link href="/assets/css/screen.css" rel="stylesheet">
+
+    <link href="/assets/css/main.css" rel="stylesheet">
+
+    <script src="/assets/js/jquery.min.js"></script>
+
+  </head>
+
+  
+
+  
+
+  <body class="layout-tils">
+
+    <!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+  <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+      <img src="/assets/images/logo.png" alt="Son Do">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+      <!-- Begin Menu -->
+
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/about">About</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">Blog</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+
+        
+        <li class="nav-item active">
+          
+          <a class="nav-link" href="/tils">TILs</a>
+        </li>
+      </ul>
+      <!-- End Menu -->
+
+    </div>
+
+  </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+
+    <div class="site-content dark">
+
+      <div class="container">
+        <!-- Content
+================================================== -->
+        <div class="main-content">
+          <div class="row listrecent">
+  
+    
+  
+    
+  
+    
+      <div class="section-title col-md-12 mt-4">
+        <h2 id="tils">Category <span class="text-capitalize">TILs</span></h2>
+      </div>
+      
+      
+        
+          
+            <!-- begin post -->
+
+
+<div class="col-lg-12 col-md-12 mb-30px card-group">
+  <div class="card h-100">
+    <div class="maxthumb">
+      <a href="http://localhost:4000/rails-where-like-query/">
+        
+      </a>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"><a class="text-dark" href="http://localhost:4000/rails-where-like-query/">Better Rails where like query</a></h2>
+      <h4 class="card-text"><p><strong>Problem</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">user_name</span> <span class="o">=</span> <span class="s2">"I'm Tony"</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="s2">"name like '%</span><span class="si">#{</span><span class="n">user_name</span><span class="si">}</span><span class="s2">%'"</span><span class="p">)</span>
+<span class="c1"># =&gt; SELECT  `users`.* FROM `users` WHERE (name like '%I'm Tony%')</span>
+<span class="o">=&gt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">StatementInvalid</span><span class="p">:</span> <span class="no">Mysql2</span><span class="o">::</span><span class="no">Error</span><span class="p">:</span> <span class="no">You</span> <span class="n">have</span> <span class="n">an</span> <span class="n">error</span> <span class="k">in</span> <span class="n">your</span> <span class="no">SQL</span> <span class="n">syntax</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p><strong>Better solution</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="s2">"name like ?"</span><span class="p">,</span> <span class="s2">"%</span><span class="si">#{</span><span class="n">user_name</span><span class="si">}</span><span class="s2">%"</span><span class="p">)</span>
+<span class="c1"># =&gt; SELECT  `users`.* FROM `users` WHERE (name like '%I\'m Tony%')</span>
+</code></pre></div></div>
+</h4>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="wrapfooter">
+        <span class="post-date pull-right">04 Dec 2019</span>
+        
+        
+          <a class="smoothscroll" href="/categories.html#sql">SQL</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#tils">TILs</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#rails">rails</a>
+
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end post -->
+
+          
+        
+      
+        
+          
+            <!-- begin post -->
+
+
+<div class="col-lg-12 col-md-12 mb-30px card-group">
+  <div class="card h-100">
+    <div class="maxthumb">
+      <a href="http://localhost:4000/set-basic-auth-for-specific-environment/">
+        
+      </a>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"><a class="text-dark" href="http://localhost:4000/set-basic-auth-for-specific-environment/">Set basic auth for specific environment</a></h2>
+      <h4 class="card-text"><p><strong>For all environment</strong><br />
+Set authentication in <code class="language-plaintext highlighter-rouge">ApplicationController</code></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># app/controllers/application_controller.rb</span>
+<span class="k">class</span> <span class="nc">ApplicationController</span> <span class="o">&lt;</span> <span class="no">ActionController</span><span class="o">::</span><span class="no">Base</span>
+  <span class="n">http_basic_authenticate_with</span> <span class="ss">name: </span><span class="s1">'username'</span><span class="p">,</span> <span class="ss">password: </span><span class="s1">'password'</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p><strong>For specific environment</strong><br />
+Set authentication in <code class="language-plaintext highlighter-rouge">environment.rb</code>, using rack middleware</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># config/environments/staging.rb</span>
+<span class="c1"># also can set for other environment (development, clone, preview...)</span>
+<span class="no">Rails</span><span class="p">.</span><span class="nf">application</span><span class="p">.</span><span class="nf">configure</span> <span class="k">do</span>
+  <span class="n">config</span><span class="p">.</span><span class="nf">middleware</span><span class="p">.</span><span class="nf">use</span> <span class="no">Rack</span><span class="o">::</span><span class="no">Auth</span><span class="o">::</span><span class="no">Basic</span><span class="p">,</span> <span class="s2">"Protected Environment"</span> <span class="k">do</span> <span class="o">|</span><span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="o">|</span>
+    <span class="n">username</span> <span class="o">==</span> <span class="s2">"username"</span> <span class="o">&amp;&amp;</span> <span class="n">password</span> <span class="o">==</span> <span class="s2">"password"</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+</h4>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="wrapfooter">
+        <span class="post-date pull-right">26 Sep 2019</span>
+        
+        
+          <a class="smoothscroll" href="/categories.html#tils">TILs</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#rails">rails</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#ruby">ruby</a>
+
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end post -->
+
+          
+        
+      
+        
+          
+            <!-- begin post -->
+
+
+<div class="col-lg-12 col-md-12 mb-30px card-group">
+  <div class="card h-100">
+    <div class="maxthumb">
+      <a href="http://localhost:4000/rail-cache-fetch-block/">
+        
+      </a>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"><a class="text-dark" href="http://localhost:4000/rail-cache-fetch-block/">Rails cache fetch</a></h2>
+      <h4 class="card-text"><p><strong>Problem</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">generate_job_id</span>
+  <span class="n">cached_value</span> <span class="o">=</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"cache_key"</span><span class="p">,</span> <span class="ss">expires_in: </span><span class="mi">24</span><span class="p">.</span><span class="nf">hours</span><span class="p">)</span> <span class="k">do</span>
+
+    <span class="n">job_ids</span> <span class="o">=</span> <span class="no">Job</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:id</span><span class="p">)</span> <span class="c1"># Trillion jobs</span>
+
+    <span class="k">return</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">job_ids</span><span class="p">.</span><span class="nf">blank?</span>
+    <span class="n">job_ids</span>
+  <span class="k">end</span>
+  <span class="n">cached_value</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>=&gt; Missing cache when job_ids blank, cached_value is nil</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">generate_job_id</span>
+  <span class="n">cached_value</span> <span class="o">=</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"cache_key"</span><span class="p">,</span> <span class="ss">expires_in: </span><span class="mi">24</span><span class="p">.</span><span class="nf">hours</span><span class="p">)</span> <span class="k">do</span>
+
+    <span class="n">job_ids</span> <span class="o">=</span> <span class="no">Job</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:id</span><span class="p">)</span> <span class="c1"># Trillion jobs</span>
+
+    <span class="k">break</span> <span class="p">[]</span> <span class="k">if</span> <span class="n">job_ids</span><span class="p">.</span><span class="nf">blank?</span>
+    <span class="n">job_ids</span>
+  <span class="k">end</span>
+  <span class="n">cached_value</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>=&gt; Missing cache when job_ids blank, cached_value is []</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">generate_job_id</span>
+  <span class="n">cached_value</span> <span class="o">=</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"cache_key"</span><span class="p">,</span> <span class="ss">expires_in: </span><span class="mi">24</span><span class="p">.</span><span class="nf">hours</span><span class="p">)</span> <span class="k">do</span>
+
+    <span class="n">job_ids</span> <span class="o">=</span> <span class="no">Job</span><span class="p">.</span><span class="nf">all</span><span class="p">.</span><span class="nf">map</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:id</span><span class="p">)</span> <span class="c1"># Trillion jobs</span>
+
+    <span class="n">job_ids</span><span class="p">.</span><span class="nf">blank?</span> <span class="p">?</span> <span class="p">[]</span> <span class="p">:</span> <span class="n">job_ids</span>
+  <span class="k">end</span>
+  <span class="n">cached_value</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>=&gt; Problem solved, “cache_key”</p>
+
+<p>Reference to
+https://github.com/rails/rails/blob/a08a069acdbea8a74282f753a2498d0d7b0c3137/activesupport/lib/active_support/cache.rb#L31
+Exactly function</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">#https://github.com/rails/rails/blob/master/activesupport/lib/active_support/cache.rb#L737</span>
+
+<span class="k">def</span> <span class="nf">save_block_result_to_cache</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="o">**</span><span class="n">options</span><span class="p">)</span>
+  <span class="n">result</span> <span class="o">=</span> <span class="n">instrument</span><span class="p">(</span><span class="ss">:generate</span><span class="p">,</span> <span class="nb">name</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="k">do</span>
+    <span class="k">yield</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+  <span class="k">end</span>
+
+  <span class="n">write</span><span class="p">(</span><span class="nb">name</span><span class="p">,</span> <span class="n">result</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span> <span class="k">unless</span> <span class="n">result</span><span class="p">.</span><span class="nf">nil?</span> <span class="o">&amp;&amp;</span> <span class="n">options</span><span class="p">[</span><span class="ss">:skip_nil</span><span class="p">]</span>
+  <span class="n">result</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p>The line <code class="language-plaintext highlighter-rouge">write</code> is not executed =&gt;</p>
+</h4>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="wrapfooter">
+        <span class="post-date pull-right">19 Sep 2019</span>
+        
+        
+          <a class="smoothscroll" href="/categories.html#tils">TILs</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#rails">rails</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#ruby">ruby</a>
+
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end post -->
+
+          
+        
+      
+        
+          
+            <!-- begin post -->
+
+
+<div class="col-lg-12 col-md-12 mb-30px card-group">
+  <div class="card h-100">
+    <div class="maxthumb">
+      <a href="http://localhost:4000/array-uniq/">
+        
+      </a>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"><a class="text-dark" href="http://localhost:4000/array-uniq/">Ruby Array uniq</a></h2>
+      <h4 class="card-text"><p><strong>List post</strong></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>post_a (topic_name: "Ruby", priority: 10)  
+post_b (topic_name: "PHP", priority: 9)  
+post_c (topic_name: "Ruby", priority: 8)  
+</code></pre></div></div>
+
+<p>Expect each topic has only 1 post, order by priority</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">current_posts</span>
+<span class="c1"># =&gt; [["Ruby", post_a], ["PHP", post_b], ["Ruby", post_c]]</span>
+</code></pre></div></div>
+
+<p><strong>to_h</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">current_posts</span><span class="p">.</span><span class="nf">to_h</span>
+<span class="c1"># =&gt; {"Ruby" =&gt; post_c, "PHP" =&gt; post_b}</span>
+</code></pre></div></div>
+<p>=&gt; <code class="language-plaintext highlighter-rouge">post_c</code> with lower priority is above <code class="language-plaintext highlighter-rouge">post_b</code> =&gt; <strong>ERROR</strong></p>
+
+<p><strong>uniq</strong></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">current_posts</span><span class="p">.</span><span class="nf">uniq</span><span class="p">(</span><span class="o">&amp;</span><span class="ss">:first</span><span class="p">).</span><span class="nf">to_h</span>
+<span class="c1"># =&gt; {"Ruby" =&gt; post_a, "PHP" =&gt; post_b}</span>
+</code></pre></div></div>
+<p>=&gt; as expected</p>
+</h4>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="wrapfooter">
+        <span class="post-date pull-right">14 Jun 2019</span>
+        
+        
+          <a class="smoothscroll" href="/categories.html#tils">TILs</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#rails">rails</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#ruby">ruby</a>
+
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end post -->
+
+          
+        
+      
+        
+          
+            <!-- begin post -->
+
+
+<div class="col-lg-12 col-md-12 mb-30px card-group">
+  <div class="card h-100">
+    <div class="maxthumb">
+      <a href="http://localhost:4000/rails-count-and-size/">
+        
+      </a>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"><a class="text-dark" href="http://localhost:4000/rails-count-and-size/">Rails Size & Count</a></h2>
+      <h4 class="card-text"><p>Mỗi khi exec query, Active Record sẽ tạo ra biến @loaded = true cho Relation đó.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="vi">@posts</span> <span class="o">=</span> <span class="no">Post</span><span class="p">.</span><span class="nf">all</span>
+
+<span class="vi">@posts</span><span class="p">.</span><span class="nf">loaded?</span> <span class="c1">#=&gt;true</span>
+</code></pre></div></div>
+
+<p>Hàm <code class="language-plaintext highlighter-rouge">size</code> và <code class="language-plaintext highlighter-rouge">count</code></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">size</span>
+  <span class="n">loaded?</span> <span class="p">?</span> <span class="vi">@records</span><span class="p">.</span><span class="nf">length</span> <span class="p">:</span> <span class="n">count</span><span class="p">(</span><span class="ss">:all</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">count</span><span class="p">(</span><span class="n">column_name</span> <span class="o">=</span> <span class="kp">nil</span><span class="p">,</span> <span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+  <span class="c1"># [...]</span>
+  <span class="n">calculate</span><span class="p">(</span><span class="ss">:count</span><span class="p">,</span> <span class="n">column_name</span><span class="p">,</span> <span class="n">options</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div></div>
+<p><code class="language-plaintext highlighter-rouge">count</code> luôn luôn sinh ra query, còn <code class="language-plaintext highlighter-rouge">size</code> sẽ check relation và query nếu cần.</p>
+
+<p>Rõ ràng là cần cân nhắc dùng <code class="language-plaintext highlighter-rouge">count</code> để tránh dư thừa query.</p>
+</h4>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="wrapfooter">
+        <span class="post-date pull-right">22 May 2019</span>
+        
+        
+          <a class="smoothscroll" href="/categories.html#tils">TILs</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#rails">rails</a>
+
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end post -->
+
+          
+        
+      
+        
+          
+            <!-- begin post -->
+
+
+<div class="col-lg-12 col-md-12 mb-30px card-group">
+  <div class="card h-100">
+    <div class="maxthumb">
+      <a href="http://localhost:4000/ruby-set/">
+        
+      </a>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"><a class="text-dark" href="http://localhost:4000/ruby-set/">Ruby Set</a></h2>
+      <h4 class="card-text"><p>Ruby Set - a list of unique items.<br />
+Two special attributes:</p>
+<ul>
+  <li>Fast lookup times (with include?)</li>
+  <li>Unique values</li>
+</ul>
+
+<p>Benchmark <code class="language-plaintext highlighter-rouge">#include?</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 2.5.0</span>
+<span class="n">set</span>   <span class="ss">include: </span><span class="mf">8381985.2</span> <span class="n">i</span><span class="o">/</span><span class="n">s</span>
+<span class="n">array</span> <span class="ss">include: </span><span class="mf">703305.5</span>  <span class="n">i</span><span class="o">/</span><span class="n">s</span> <span class="o">-</span> <span class="mf">11.92</span><span class="n">x</span>  <span class="n">slower</span>
+</code></pre></div></div>
+
+<p><em>Credit to <a href="https://www.rubyguides.com/2018/08/ruby-set-class/">rubyguides</a></em></p>
+</h4>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="wrapfooter">
+        <span class="post-date pull-right">26 Apr 2019</span>
+        
+        
+          <a class="smoothscroll" href="/categories.html#rails">Rails</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#tils">TILs</a>
+
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end post -->
+
+          
+        
+      
+        
+          
+            <!-- begin post -->
+
+
+<div class="col-lg-12 col-md-12 mb-30px card-group">
+  <div class="card h-100">
+    <div class="maxthumb">
+      <a href="http://localhost:4000/html-target-_blank-and-blank/">
+        
+      </a>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"><a class="text-dark" href="http://localhost:4000/html-target-_blank-and-blank/">HTML target _blank and blank</a></h2>
+      <h4 class="card-text"><p><a href="https://www.w3schools.com/tags/att_a_target.asp" target="_blank"> &lt;a&gt; tag document</a></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;a</span> <span class="na">target=</span><span class="s">"_blank|_self|_parent|_top|framename"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">_blank</code> always opens url in new window</li>
+  <li><code class="language-plaintext highlighter-rouge">blank</code> means <code class="language-plaintext highlighter-rouge">framename</code>, opens url in a window named <code class="language-plaintext highlighter-rouge">blank</code> if exists, otherwise open new window and name it <code class="language-plaintext highlighter-rouge">blank</code></li>
+  <li>you possible to set any name for <code class="language-plaintext highlighter-rouge">target</code> <br />eg: <code class="language-plaintext highlighter-rouge">&lt;a target="new_window"&gt;</code></li>
+</ul>
+</h4>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="wrapfooter">
+        <span class="post-date pull-right">23 Apr 2019</span>
+        
+        
+          <a class="smoothscroll" href="/categories.html#html">HTML</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#tils">TILs</a>
+
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end post -->
+
+          
+        
+      
+        
+          
+            <!-- begin post -->
+
+
+<div class="col-lg-12 col-md-12 mb-30px card-group">
+  <div class="card h-100">
+    <div class="maxthumb">
+      <a href="http://localhost:4000/happy-420/">
+        
+      </a>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"><a class="text-dark" href="http://localhost:4000/happy-420/">Happy 420</a></h2>
+      <h4 class="card-text"><p><code class="language-plaintext highlighter-rouge">#happy420</code> <code class="language-plaintext highlighter-rouge">#happybirthday</code></p>
+
+<p><img src="https://media.giphy.com/media/Jnx5ztK49mHJe/giphy.gif" alt="Happy 420" title="Happy 420" width="50%" /></p>
+</h4>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="wrapfooter">
+        <span class="post-date pull-right">20 Apr 2019</span>
+        
+        
+          <a class="smoothscroll" href="/categories.html#tils">TILs</a>
+
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end post -->
+
+          
+        
+      
+        
+          
+            <!-- begin post -->
+
+
+<div class="col-lg-12 col-md-12 mb-30px card-group">
+  <div class="card h-100">
+    <div class="maxthumb">
+      <a href="http://localhost:4000/bootstrap-4-grid-tier-&-reordering/">
+        
+      </a>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"><a class="text-dark" href="http://localhost:4000/bootstrap-4-grid-tier-&-reordering/">Bootstrap 4 grid tier & reordering</a></h2>
+      <h4 class="card-text"><h5 id="grid-option">Grid option</h5>
+<p>From <a href="https://github.com/twbs/bootstrap/releases/tag/v4.0.0-alpha.6">v4.0.0-alpha.6</a>, the <code class="language-plaintext highlighter-rouge">xs</code> tier no longer requires a breakpoint abbreviation</p>
+
+<p><img src="/assets/images/tils/bootstrap-v4-grid.png" alt="bootstrap-v4-grid" height="auto" width="720px" /></p>
+
+<h5 id="reordering">Reordering</h5>
+<p>From <a href="https://github.com/twbs/bootstrap/releases/tag/v4.0.0-beta">v4.0.0-beta</a>, use <code class="language-plaintext highlighter-rouge">.order-</code> classes for controlling the visual order of your content</p>
+
+<p>PC view</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Column A | Column B |
+</code></pre></div></div>
+
+<p>Mobile view</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>| Column B |
+| Column A |
+</code></pre></div></div>
+</h4>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="wrapfooter">
+        <span class="post-date pull-right">18 Apr 2019</span>
+        
+        
+          <a class="smoothscroll" href="/categories.html#bootstrap">Bootstrap</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#tils">TILs</a>
+
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end post -->
+
+          
+        
+      
+        
+          
+            <!-- begin post -->
+
+
+<div class="col-lg-12 col-md-12 mb-30px card-group">
+  <div class="card h-100">
+    <div class="maxthumb">
+      <a href="http://localhost:4000/boolean-type-in-rails-and-mysql/">
+        
+      </a>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"><a class="text-dark" href="http://localhost:4000/boolean-type-in-rails-and-mysql/">Boolean type in Rails & Mysql</a></h2>
+      <h4 class="card-text"><p><code class="language-plaintext highlighter-rouge">MySQL BOOLEAN data type, which is the synonym of TINYINT(1), value range [-128..127]</code></p>
+
+<h5 id="confused-situation">Confused situation</h5>
+
+<table>
+  <thead>
+    <tr>
+      <th>id (integer)</th>
+      <th>name (string)</th>
+      <th>status (boolean)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>Aoi</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>Maria</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /></p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Rails 4</span>
+<span class="no">Idol</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nf">status</span>
+<span class="o">=&gt;</span> <span class="kp">false</span>
+
+<span class="c1"># Rails 5</span>
+<span class="no">Idol</span><span class="p">.</span><span class="nf">find</span><span class="p">(</span><span class="mi">2</span><span class="p">).</span><span class="nf">status</span>
+<span class="o">=&gt;</span> <span class="kp">true</span>
+</code></pre></div></div>
+<h5 id="explanation">Explanation</h5>
+
+<div class="row">
+  <div class="col-md-6 col-sm-12">
+  <p>Rails 4 <a href="https://github.com/rails/rails/blob/4-2-stable/activerecord/lib/active_record/type/boolean.rb">boolean.rb</a></p>
+  <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">cast_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s1">''</span>
+    <span class="kp">nil</span>
+  <span class="k">elsif</span> <span class="no">TRUE_VALUES</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+    <span class="kp">true</span>
+  <span class="k">else</span>
+    <span class="c1"># [...]</span>
+    <span class="kp">false</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+  </div>
+  <div class="col-md-6 col-sm-12">
+  <p>Rails 5 <a href="https://github.com/rails/rails/blob/5-2-stable/activemodel/lib/active_model/type/boolean.rb">boolean.rb</a></p>
+  <div class="language-ruby highlighter-rouge">
+    <div class="highlight">
+      <pre class="highlight"><code><span class="k">def</span> <span class="nf">cast_value</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="s2">""</span>
+    <span class="kp">nil</span>
+  <span class="k">else</span>
+    <span class="o">!</span><span class="no">FALSE_VALUES</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+<br /><br />
+</code></pre></div></div>
+  </div>
+</div>
+</h4>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="wrapfooter">
+        <span class="post-date pull-right">17 Apr 2019</span>
+        
+        
+          <a class="smoothscroll" href="/categories.html#mysql">MySQL</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#rails">Rails</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#tils">TILs</a>
+
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end post -->
+
+          
+        
+      
+        
+          
+            <!-- begin post -->
+
+
+<div class="col-lg-12 col-md-12 mb-30px card-group">
+  <div class="card h-100">
+    <div class="maxthumb">
+      <a href="http://localhost:4000/be-careful-when-use-find_by/">
+        
+      </a>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"><a class="text-dark" href="http://localhost:4000/be-careful-when-use-find_by/">Be careful when use find_by</a></h2>
+      <h4 class="card-text"><div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">City</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"Maria"</span><span class="p">)</span> <span class="o">||</span> <span class="no">City</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"Aoi"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Liệu có giống với:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">City</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">name: </span><span class="p">[</span><span class="s2">"Maria"</span><span class="p">,</span> <span class="s2">"Aoi"</span><span class="p">])</span>
+</code></pre></div></div>
+
+<p>Trông thì có vẻ giống đó, thử check SQL câu dưới xem</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Idol</span><span class="p">.</span><span class="nf">find_by</span><span class="p">(</span><span class="ss">name: </span><span class="p">[</span><span class="s2">"Maria"</span><span class="p">,</span> <span class="s2">"Aoi"</span><span class="p">])</span>
+<span class="c1"># =&gt; SELECT  `idols`.* FROM `idols` WHERE `idols`.`name` IN ('Maria', 'Aoi') LIMIT 1</span>
+</code></pre></div></div>
+<p>Trông vẫn có vẻ ổn, nhưng câu này lại trả ra <code class="language-plaintext highlighter-rouge">Aoi</code> thay vì <code class="language-plaintext highlighter-rouge">Maria</code> như mình mong đợi.</p>
+
+<p>Vấn đề là hàm <code class="language-plaintext highlighter-rouge">find_by(arg, *args)</code> được định nghĩa như sau:</p>
+
+<blockquote>
+  <p>Finds the first record matching the specified conditions. There is no implied ordering so if order matters, you should specify it yourself.
+If no record is found, returns nil.</p>
+</blockquote>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># File activerecord/lib/active_record/relation/finder_methods.rb, line 80</span>
+<span class="k">def</span> <span class="nf">find_by</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+  <span class="n">where</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">).</span><span class="nf">take</span>
+<span class="k">rescue</span> <span class="o">::</span><span class="no">RangeError</span>
+  <span class="kp">nil</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<p>Vì <code class="language-plaintext highlighter-rouge">no implied ordering</code>, nên khi gặp <code class="language-plaintext highlighter-rouge">Aoi</code> với id nhỏ hơn sẽ trả ra kết quả luôn thay vì tìm <code class="language-plaintext highlighter-rouge">Maria</code> trước theo như argument mà ta truyền vào.</p>
+
+<p>Để có được kết quả như mong đợi mình phải dùng where và thêm order:</p>
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">Idol</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="ss">name: </span><span class="p">[</span><span class="s2">"Maria"</span><span class="p">,</span> <span class="s2">"Aoi"</span><span class="p">]).</span><span class="nf">order</span><span class="p">(</span><span class="s2">"FIELD(name, ('Maria, Aoi'))"</span><span class="p">).</span><span class="nf">take</span>
+<span class="c1"># =&gt; SELECT  `idols`.* FROM `idols` WHERE `idols`.`name` IN ('Maria', 'Aoi') ORDER BY FIELD(name, ('Maria, Aoi')) LIMIT 1</span>
+</code></pre></div></div>
+</h4>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="wrapfooter">
+        <span class="post-date pull-right">08 Apr 2019</span>
+        
+        
+          <a class="smoothscroll" href="/categories.html#rails">Rails</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#tils">TILs</a>
+
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end post -->
+
+          
+        
+      
+        
+          
+            <!-- begin post -->
+
+
+<div class="col-lg-12 col-md-12 mb-30px card-group">
+  <div class="card h-100">
+    <div class="maxthumb">
+      <a href="http://localhost:4000/dung-2-account-github-tren-cung-1-thiet-bi/">
+        
+      </a>
+    </div>
+    <div class="card-body">
+      <h2 class="card-title"><a class="text-dark" href="http://localhost:4000/dung-2-account-github-tren-cung-1-thiet-bi/">Dùng 2 account github trên cùng 1 thiết bị</a></h2>
+      <h4 class="card-text"><p>Config lại file <code class="language-plaintext highlighter-rouge">~/.ssh/config</code></p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Account của công ty</span>
+<span class="no">Host</span> <span class="n">github</span><span class="p">.</span><span class="nf">com</span>
+<span class="no">HostName</span> <span class="n">github</span><span class="p">.</span><span class="nf">com</span>
+<span class="no">User</span> <span class="n">git</span>
+<span class="no">IdentityFile</span> <span class="o">~</span><span class="sr">/.ssh/i</span><span class="n">d_rsa</span>
+
+<span class="c1"># Account cá nhân</span>
+<span class="no">Host</span> <span class="n">github</span><span class="o">-</span><span class="n">me</span>
+<span class="no">HostName</span> <span class="n">github</span><span class="p">.</span><span class="nf">com</span>
+<span class="no">User</span> <span class="n">git</span>
+<span class="no">IdentityFile</span> <span class="o">~</span><span class="sr">/.ssh/i</span><span class="n">d_rsa_me</span>
+</code></pre></div></div>
+
+<p>Khi Clone thì chú ý url, sửa <code class="language-plaintext highlighter-rouge">git@github.com</code> thành <code class="language-plaintext highlighter-rouge">git@github-me</code></p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone git@github-me:account_name/repo_name.git
+
+</code></pre></div></div>
+
+<p>Check lại remote:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git remote -v
+origin	git@github-me:account_name/repo_name.git (fetch)
+origin	git@github-me:account_name/repo_name.git (push)
+</code></pre></div></div>
+
+<h5 id="config-author">Config author</h5>
+<ul>
+  <li>Add config system
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># /etc/gitconfig</span>
+<span class="p">[</span><span class="n">user</span><span class="p">]</span>
+ <span class="n">email</span> <span class="o">=</span> <span class="n">account</span><span class="vi">@company</span><span class="p">.</span><span class="nf">com</span>
+ <span class="nb">name</span> <span class="o">=</span> <span class="n">company</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Add config local
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># your_personal_repo/.git/config</span>
+<span class="p">[</span><span class="n">user</span><span class="p">]</span>
+ <span class="n">email</span> <span class="o">=</span> <span class="n">account</span><span class="vi">@me</span><span class="p">.</span><span class="nf">com</span>
+ <span class="nb">name</span> <span class="o">=</span> <span class="n">me</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+</h4>
+    </div>
+    <div class="card-footer bg-white">
+      <div class="wrapfooter">
+        <span class="post-date pull-right">07 Apr 2019</span>
+        
+        
+          <a class="smoothscroll" href="/categories.html#git">Git</a>
+
+        
+          <a class="smoothscroll" href="/categories.html#tils">TILs</a>
+
+        
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end post -->
+
+          
+        
+      
+      
+      
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+</div>
+
+        </div>
+      </div>
+      <!-- /.container -->
+    </div>
+    <!-- /.site-content-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"></script>
+
+    <script src="/assets/js/mediumish.js"></script>
+
+    <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+
+</html>

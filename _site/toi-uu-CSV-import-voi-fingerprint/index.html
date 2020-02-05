@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/assets/images/logo.png">
+
+    <title>Tối ưu CSV import với fingerprint | Son Do</title>
+
+    <!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Tối ưu CSV import với fingerprint | Son Do</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Tối ưu CSV import với fingerprint" />
+<meta name="author" content="sondh5" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Mình đã giảm thời gian import CSV từ 6 tiếng xuống còn 50 phút với kĩ thuật fingerprint." />
+<meta property="og:description" content="Mình đã giảm thời gian import CSV từ 6 tiếng xuống còn 50 phút với kĩ thuật fingerprint." />
+<link rel="canonical" href="http://localhost:4000/toi-uu-CSV-import-voi-fingerprint/" />
+<meta property="og:url" content="http://localhost:4000/toi-uu-CSV-import-voi-fingerprint/" />
+<meta property="og:site_name" content="Son Do" />
+<meta property="og:image" content="https://www.hsbc.co.uk/content/dam/hsbc/gb/images/fingerprint.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-05-03T00:00:00+05:30" />
+<script type="application/ld+json">
+{"headline":"Tối ưu CSV import với fingerprint","dateModified":"2019-05-03T00:00:00+05:30","datePublished":"2019-05-03T00:00:00+05:30","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/toi-uu-CSV-import-voi-fingerprint/"},"url":"http://localhost:4000/toi-uu-CSV-import-voi-fingerprint/","publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/assets/images/logo.png"},"name":"sondh5"},"image":"https://www.hsbc.co.uk/content/dam/hsbc/gb/images/fingerprint.jpg","author":{"@type":"Person","name":"sondh5"},"description":"Mình đã giảm thời gian import CSV từ 6 tiếng xuống còn 50 phút với kĩ thuật fingerprint.","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i"
+      rel="stylesheet">
+      
+    <link rel="shortcut icon" href="/public/favicon.ico">
+
+    <link href="/assets/css/screen.css" rel="stylesheet">
+
+    <link href="/assets/css/main.css" rel="stylesheet">
+
+    <script src="/assets/js/jquery.min.js"></script>
+
+  </head>
+
+  
+
+  
+
+  <body class="layout-post">
+
+    <!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+  <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/">
+      <img src="/assets/images/logo.png" alt="Son Do">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+      <!-- Begin Menu -->
+
+      <ul class="navbar-nav ml-auto">
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/about">About</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/">Blog</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/categories">Categories</a>
+        </li>
+
+        
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/tils">TILs</a>
+        </li>
+      </ul>
+      <!-- End Menu -->
+
+    </div>
+
+  </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+
+    <div class="site-content">
+
+      <div class="container">
+
+
+
+        <!-- Content
+================================================== -->
+        <div class="main-content">
+          <!-- Begin Article
+================================================== -->
+<div class="container">
+	<div class="row">
+
+		<!-- Post Share -->
+		<div class="col-md-2 pl-0">
+			<div class="share">
+  <p>
+    Share
+  </p>
+  <ul>
+    <li class="ml-1 mr-1">
+      <a target="_blank" href="https://twitter.com/intent/tweet?text=Tối ưu CSV import với fingerprint&url=http://localhost:4000/toi-uu-CSV-import-voi-fingerprint/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=435');return false;">
+        <i class="fab fa-twitter"></i>
+      </a>
+    </li>
+
+    <li class="ml-1 mr-1">
+      <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/toi-uu-CSV-import-voi-fingerprint/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+    </li>
+    
+    <li class="ml-1 mr-1">
+      <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/toi-uu-CSV-import-voi-fingerprint/" onclick="window.open(this.href, 'linkedin-share', 'width=550,height=435');return false;">
+          <i class="fab fa-linkedin-in"></i>
+      </a>
+    </li>
+
+  </ul>
+  
+  <div class="sep">
+  </div>
+  <ul>
+    <li>
+      <a class="small smoothscroll" href="#disqus_thread"></a>
+    </li>
+  </ul>
+  
+</div>
+
+		</div>
+
+
+		<!-- Post -->
+		
+
+		<div class="col-md-9 flex-first flex-md-unordered">
+			<div class="mainheading">
+				<!-- Post Title -->
+				<h1 class="posttitle">Tối ưu CSV import với fingerprint</h1>
+
+			</div>
+
+			<!-- Post Featured Image -->
+			
+			<!-- End Featured Image -->
+
+			<!-- Post Content -->
+			<div class="article-post">
+				<p>Chuyện là khách của mình bán sản phẩm X, hệ thống của ổng có ~1 triệu sản phẩm.<br />
+Mỗi ngày ổng sẽ export database 1 file CSV, gửi cho mình import vào hệ thống T để thống kê.<br />
+Trong file CSV, sẽ có những thay đổi như:</p>
+<ul>
+  <li>Sản phẩm thêm mới</li>
+  <li>Sản phẩm ngưng kinh doanh</li>
+  <li>Sản phẩm thay đổi trạng thái (còn hàng, hết hàng…)</li>
+  <li>Sản phẩm không thay đổi gì (~70-80%)</li>
+</ul>
+
+<h4 id="logic-xử-lí-hiện-tại">Logic xử lí hiện tại</h4>
+<ul>
+  <li>Đọc từng dòng CSV</li>
+  <li>Parse CSV</li>
+  <li>Import sử dụng Parallel Import x4 processes</li>
+</ul>
+
+<p>Thời gian cho mỗi lần import ~6 tiếng. Mỗi ngày có 24h mà mất 6h để import thì import xong dữ liệu cũng outdate :v</p>
+
+<h4 id="bài-toán">Bài toán</h4>
+<ul>
+  <li>Vấn đề: số lượng sản phẩm không thay đổi gì khá lớn, những vẫn rất mất nhiều thời gian để đọc, parse rồi check trùng lặp</li>
+  <li>Ý tưởng: Check trùng lặp trước khi parse, vậy thì chỉ cần parse và import 20-30% số dòng thay vì 100% như trước đây</li>
+  <li>Kỹ thuật: Sử dụng kĩ thuật fingerprinting giống như cách <a href="https://guides.rubyonrails.org/asset_pipeline.html#what-is-fingerprinting-and-why-should-i-care-questionmark">Rails xử lí Asset Pipeline</a></li>
+</ul>
+
+<h4 id="xử-lí">Xử lí</h4>
+<ul>
+  <li>Tạo 1 Set trong Rails cache, đặt tên là <code class="language-plaintext highlighter-rouge">fp_products_list</code>
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fp_products_list</span> <span class="o">=</span> <span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">fetch</span><span class="p">(</span><span class="s2">"fp_products_list"</span><span class="p">)</span> <span class="p">{</span> <span class="no">Set</span><span class="p">.</span><span class="nf">new</span> <span class="p">}</span> 
+</code></pre></div>    </div>
+    <p>Lý do mình dùng Set có thể đọc thêm <a href="/ruby-set/">Ruby Set</a></p>
+  </li>
+  <li>Với mỗi sản phẩm import thành công, tạo ra 1 fingerprint cho sản phẩm đó
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">finger_print</span> <span class="o">=</span> <span class="no">Digest</span><span class="o">::</span><span class="no">MD5</span><span class="p">.</span><span class="nf">base64digest</span><span class="p">(</span><span class="n">row</span><span class="p">.</span><span class="nf">to_json</span><span class="p">)</span>
+</code></pre></div>    </div>
+    <p>mình sử dụng <code class="language-plaintext highlighter-rouge">base64digest</code> vì nó ngắn hơn, sẽ tiết kiệm size hơn so với <code class="language-plaintext highlighter-rouge">hexdigest</code></p>
+  </li>
+  <li>Đưa fingerprint vào <code class="language-plaintext highlighter-rouge">fp_products_list</code>
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">fp_products_list</span><span class="p">.</span><span class="nf">add</span><span class="p">(</span><span class="n">finger_print</span><span class="p">)</span>
+<span class="no">Rails</span><span class="p">.</span><span class="nf">cache</span><span class="p">.</span><span class="nf">write</span><span class="p">(</span><span class="s2">"fp_products_list"</span><span class="p">,</span> <span class="n">fp_products_list</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+  <li>Trong những lần import sau, kiểm tra xem product đó có thay đổi gì so với lần trước hay không bằng fingerprint
+    <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">CSV</span><span class="p">.</span><span class="nf">foreach</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="k">do</span> <span class="o">|</span><span class="n">row</span><span class="o">|</span>
+  <span class="k">next</span> <span class="k">if</span> <span class="n">fp_products_list</span><span class="o">&amp;</span><span class="p">.</span><span class="nf">include?</span><span class="p">(</span><span class="no">Digest</span><span class="o">::</span><span class="no">MD5</span><span class="p">.</span><span class="nf">base64digest</span><span class="p">(</span><span class="n">row</span><span class="p">.</span><span class="nf">to_json</span><span class="p">))</span>
+  <span class="c1"># [...]</span>
+<span class="k">end</span>
+</code></pre></div>    </div>
+    <p>Vậy là số dòng phải parse và import giảm được khoảng 75%. Kết quả là thời gian import của mình đã giảm từ 6h xuống còn 53 phút :D</p>
+  </li>
+</ul>
+
+			</div>
+
+			<!-- Post Date -->
+			<p>
+				<small>
+					<span class="post-date"><time class="post-date"
+							datetime="2019-05-03">03 May 2019</time></span>
+					
+				</small>
+			</p>
+
+			<!-- Post Categories -->
+			<div class="after-post-tags">
+				<ul class="tags">
+					
+					
+					<li>
+						<a class="smoothscroll" href="/categories.html#rails">Rails</a>
+					</li>
+					
+				</ul>
+			</div>
+			<!-- End Categories -->
+
+			<!-- Prev/Next -->
+			<div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+				
+				<a class="prev d-block col-md-6" href="http://localhost:4000/ruby-set/"> &laquo;
+					Ruby Set</a>
+				
+				
+				<a class="next d-block col-md-6 text-lg-right" href="http://localhost:4000/dai-37-ka/">第３７課
+					&raquo; </a>
+				
+				<div class="clearfix"></div>
+			</div>
+			<!-- End Categories -->
+
+		</div>
+		<!-- End Post -->
+
+	</div>
+</div>
+<!-- End Article
+================================================== -->
+
+
+
+<!-- Begin Comments
+================================================== -->
+
+<div class="container">
+	<div id="comments" class="row justify-content-center mb-5">
+		<div class="col-md-8">
+			<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'sondh5';
+    var disqus_developer = 0;
+    (function() {
+      var dsq = document.createElement('script');
+      dsq.type = 'text/javascript';
+      dsq.async = true;
+      dsq.src = window.location.protocol + '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+		</div>
+	</div>
+</div>
+
+<!--End Comments
+================================================== -->
+
+        </div>
+
+        <!-- Categories Jumbotron
+================================================== -->
+        <div class="jumbotron fortags">
+          <div class="d-md-flex h-100">
+            <div class="col-md-4 transpdark align-self-center text-center h-100">
+              <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span
+                    class="d-none d-md-inline">→</span></h2>
+              </div>
+            </div>
+            <div class="col-md-8 p-5 align-self-center text-center">
+              
+              
+              
+              <a href="/categories#jekyll">Jekyll
+                (1)</a>
+              
+              <a href="/categories#rails">Rails
+                (5)</a>
+              
+              <a href="/categories#tils">TILs
+                (12)</a>
+              
+              <a href="/categories#git">Git
+                (2)</a>
+              
+              <a href="/categories#memo">Memo
+                (11)</a>
+              
+              <a href="/categories#mysql">MySQL
+                (1)</a>
+              
+              <a href="/categories#bootstrap">Bootstrap
+                (1)</a>
+              
+              <a href="/categories#html">HTML
+                (1)</a>
+              
+              <a href="/categories#rails">rails
+                (5)</a>
+              
+              <a href="/categories#ruby">ruby
+                (3)</a>
+              
+              <a href="/categories#server">Server
+                (1)</a>
+              
+              <a href="/categories#other">Other
+                (1)</a>
+              
+              <a href="/categories#sql">SQL
+                (1)</a>
+              
+              
+              
+            </div>
+          </div>
+        </div>
+
+
+
+        <!-- Begin Footer
+  ================================================== -->
+        <footer class="footer">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 text-center text-lg-left">
+              </div>
+              <div class="col-md-6 col-sm-6 text-center text-lg-right">
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll
+                  Theme</a> by WowThemes.net <br>
+                  Customize by <a target="_blank" href="https://www.facebook.com/sondh5/">Son Do</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- End Footer
+  ================================================== -->
+
+      </div>
+      <!-- /.container -->
+    </div>
+
+
+
+
+    <!-- /.site-content-->
+
+<!-- Scripts
+================================================== -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+      crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+      crossorigin="anonymous"></script>
+
+    <script src="/assets/js/mediumish.js"></script>
+
+    <script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+    <script id="dsq-count-scr" src="//sondh5.disqus.com/count.js"></script>
+
+  </body>
+
+</html>

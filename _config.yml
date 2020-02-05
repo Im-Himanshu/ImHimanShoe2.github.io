@@ -1,0 +1,50 @@
+# Site
+name: "Son Do"
+title: "Son Do"
+description: "Personal blog"
+meta_description: "Jekyll, Personal, Blog"
+logo: 'assets/images/logo.png'
+favicon: 'assets/images/logo.png'
+baseurl: ''
+google_analytics: 'UA-139985902-1'
+disqus: 'sondh5'
+mailchimp-list: ''
+include: ["_pages"]
+permalink: /:title/
+
+# Authors
+authors:
+  sondo:
+    name: Son
+    display_name: Son Do
+    gravatar: e56154546cf4be74e393c62d1ae9f9d4
+    email: hongsondhs@gmail.com
+    web: https://www.facebook.com/sondh5
+    facebook: https://www.facebook.com/sondh5
+    description: "Software engineering/ Freelance web developer/ Backpacker"
+
+# Plugins
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-archives
+  - jekyll-furigana
+  - jekyll-katex
+
+# Archives
+jekyll-archives:
+  enabled:
+    - categories
+  layout: archive
+  permalinks:
+    category: '/category/:name/'
+
+# Pagination
+paginate: 7
+paginate_path: /page:num/
+
+# Other
+markdown: kramdown
+highlighter: rouge
